@@ -1,0 +1,26 @@
+{{noescape "<!-- Available variables:"}}
+{{noescape "{ { .User } }"}}
+{{noescape "	{ { .User.Username } }"}}
+{{noescape "	{ { .User.Role } }"}}
+{{noescape "	{ { .User.Email } }"}}
+{{noescape " -->"}}
+<html>
+  <head><title>Secret page</title></head>
+  <body>
+      <h1>Httpauth example<h1>
+      {{ with .User }}
+          <h2>Hello {{ .Username }}</h2>
+          <p>Your role is '{{ .Role }}'. Your email is {{ .Email }}.</p>
+          <p>{{ if .Role | eq "admin" }}<a href="/admin">Admin page</a> {{ end }}<a href="/logout">Logout</a></p>
+      {{ end }}
+      <form action="/change" method="post" id="change">
+      	<h3>Change email</h3>
+          <p><input type="email" name="email" value="{{.User.Email}}"></p>
+      	<h3>Change password</h3>
+          <p><input type="password" name="password"></p>
+          <h3>Repeat</h3>
+          <p><input type="password" name="password2"></p>
+          <button type="submit">Submit</button>
+      </form>
+  </body>
+</html>

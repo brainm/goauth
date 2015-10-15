@@ -1,0 +1,17 @@
+{{noescape "<!-- Available variables:"}}
+{{noescape "{ { .Messages } }"}}
+{{noescape " -->"}}
+<html>
+<head><title>Login</title></head>
+<body>
+<h1>Httpauth example</h1>
+<h2>Entry Page</h2>
+<p><b>Messages: {{.Messages}}</b></p>
+<h3>Login</h3>
+<form action="/login" method="post" id="login">
+    <input type="text" name="username" placeholder="username"><br>
+    <input type="password" name="password" placeholder="password"></br>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
